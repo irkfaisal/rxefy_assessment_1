@@ -8,6 +8,8 @@ const userWorkSchema = new mongoose.Schema({
     workId: { type: Number, require: true, trim: true },
     title: { type: String, require: true, trim: true },
     work: { type: String, require: true, trim: true },
+    assignedTo: { type: String, require: true, trim: true },
+    assignedBy: { type: ObjectId, ref: 'user' },
     createdOn: { type: Date, default: Date.now() },
     deadline: {
         type: Date,
