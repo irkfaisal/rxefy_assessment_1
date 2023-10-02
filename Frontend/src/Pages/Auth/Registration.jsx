@@ -51,8 +51,7 @@ const Registration = () => {
                 if (res.data.status === "success") {
                     // store token
                     storeToken(res.data.token)
-                    console.log('1')
-                    navigate('/dashboard')
+                    navigate(`/dashboard`)
                 } else if (res.data.status === "failed_handle") {
                     setError({ status: true, msg: res.data.message, type: 'error' })
                 } else if (res.data.status === "failed_email") {
@@ -82,7 +81,7 @@ const Registration = () => {
                 value={userData.password_conf} onChange={(e) => { handleChange(e) }} />
             <FormControlLabel control={<Checkbox value={userData.tc} color="primary" name="tc" id="tc" />} label="I agree to term and condition." />
             <Box textAlign='center'>
-                <Button type='submit' variant='contained' sx={{ mt: 3, mb: 2, px: 5, background:"#6d1b7b" }}>Join</Button>
+                <Button type='submit' variant='contained' sx={{ mt: 3, mb: 2, px: 5, background: "#6d1b7b" }}>Join</Button>
             </Box>
             {error.status ? <Alert severity={error.type}>{error.msg}</Alert> : ''}
         </Box>

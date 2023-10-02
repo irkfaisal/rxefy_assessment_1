@@ -76,8 +76,32 @@ export const userAuthApi = createApi({
                     }
                 }
             }
+        }),
+        addwork: builder.mutation({
+            query: ({ workData, token }) => {
+                return {
+                    url: 'addwork',
+                    method: 'POST',
+                    body: workData,
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `Bearer ${token}`,
+                    }
+                }
+            }
+        }),
+        getAllWorkCard: builder.query({
+            query: (token) => {
+                return {
+                    url: 'allwork',
+                    method: 'GET',
+                    headers: {
+                        'authorization': `Bearer ${token}`,
+                    }
+                }
+            }
         })
     })
 })
 
-export const { useRegisterUserMutation, useLoginUserMutation, useSendPasswordResetEmailMutation, useResetPasswordMutation, useGetLoggedUserDataQuery, useChangePasswordWhileLoginedMutation } = userAuthApi
+export const { useRegisterUserMutation, useLoginUserMutation, useSendPasswordResetEmailMutation, useResetPasswordMutation, useGetLoggedUserDataQuery, useChangePasswordWhileLoginedMutation, useAddworkMutation, useGetAllWorkCardQuery } = userAuthApi
